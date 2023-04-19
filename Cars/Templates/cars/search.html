@@ -1,0 +1,58 @@
+{% extends "cars/base.html" %}
+
+{%block side%}
+{%endblock%}
+
+{% block content %}
+
+    <div class="available"> 
+        <h1>Available Cars</h1>
+
+        <table class="table table-striped" id="table">
+            <tr>
+                <th>Car ID</th>
+                <th>CarName</th>
+                <th>ModelName</th>
+                <th>CarNumber</th>
+                <th>Features</th>
+                <th>IsAvailable</th>
+                <th>CarImage</th>
+                <th>other</th>
+            </tr>
+            {% for post in cars%}
+                <tr>
+                    <td>{{post.id}}</td>
+                    <td>{{post.CarName}}</td>
+                    <td>{{post.ModelName}}</td>
+                    <td>{{post.CarNumber}}</td>
+                    <td>{{post.Features}}</td>
+                    <td>{{post.IsAvailable}}</td>
+                    <td>
+                        <!-- <img  src="/media/{{ post.CarImage }}" alt="photo" width="70" height="80"> -->
+                        <!-- <p>{{post.CarImage}}</p> -->
+                        <a href="/media/{{ post.CarImage}}">
+                            <img src="/media/{{ post.CarImage }}" width="70" height="80">
+                        </a> 
+                    </td>
+                    {% if post.IsCarBooked == 'Yes' or post.IsCarBooked == 'yes' %}
+                    <td>
+                        <a class="btn btn-danger" id="book" href="{% url 'index' %}">Book</a>
+                    </td>
+                    {% else %}
+                    <td>
+                        <button class="btn btn-danger" disabled id="book" href="#">Book</button>
+                    </td>
+
+                    {% endif %}
+                </tr>
+
+            {%endfor%}
+        </table>
+
+        
+
+        <a href="{% url 'available' %}" class="return">Back</a>
+        
+    </div>
+
+{% endblock content%}

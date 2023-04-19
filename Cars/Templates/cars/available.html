@@ -1,0 +1,111 @@
+{% extends "cars/base.html" %}
+
+{%block side%}
+{%endblock%}
+
+{% block content %}
+
+    <div class="available"> 
+
+            <div style="margin-left: 30px;">
+                
+                <h1 id="heading">You can see all Available Cars</h1>
+                <form method="GET" action="/search" class="form-inline my-2 my-lg-0" style="padding-top: 30px;">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
+                    <button class="btn btn-outline-succss my-2 my-sm-0" type="submit">Search</button>
+                    {% if user.profile.role == 'Dealer' %}
+                       <a  class="btn btn-secondary" role="button" href="{% url 'addcar' %}" style="margin-left: 70%;"> Add Car</a>
+                    {% endif %}
+                </form>
+                
+            </div>
+        <br>
+        <br>
+
+        
+      
+
+        <table class="table table-striped" id="table">
+            <tr>
+                <th>Car ID</th>
+                <th>DealerName</th>
+                <th>CarName</th>
+                <th>ModelName</th>
+                <th>CarNumber</th>
+                <th>Features</th>
+                <th>IsAvailable</th>
+                <th>fuelConsumption</th>
+                <th>carInsurance</th>
+                <th>CostPerDay</th>
+                <th>CarImage</th>
+                <th>other</th>
+            </tr>
+            {% for post in cars%}
+                <tr>
+                    <td>{{post.id}}</td>
+                    <td>{{post.dealerName}}</td>
+                    <td>{{post.CarName}}</td>
+                    <td>{{post.ModelName}}</td>
+                    <td>{{post.CarNumber}}</td>
+                    <td>{{post.Features}}</td>
+                    <td>{{post.IsAvailable}}</td>
+                    <td>{{post.fuelConsumption}}</td>
+                    <td>{{post.carInsurance}}</td>
+                    <td>{{post.CostPerDay}}</td>
+                    <td>
+                        <!-- <img  src="/media/{{ post.CarImage }}" alt="photo" width="70" height="80"> -->
+                        <!-- <p>{{post.CarImage}}</p> -->
+                        <a href="/media/{{ post.CarImage}}">
+                            <img src="/media/{{ post.CarImage }}" width="70" height="80">
+                        </a> 
+                    </td>
+                    {% if user.profile.role == 'Customer' %}
+                        {% if post.IsAvailable == 'Yes' or post.IsAvailable == 'yes'  %}
+                        <td>
+                            <a class="btn btn-danger" id="book" href="/book/{{post.id}}">Book</a>
+                        </td>
+                        {% else %}
+                        <td>
+                            <button class="btn btn-danger" disabled id="book" href="#">Book</button>
+                        </td>
+
+                        {% endif %}
+                    
+                    {% else %}
+                        
+                        <td>
+                            <a class="btn btn-danger" id="book" href="/updatecar/{{post.id}}">Edit</a><br>
+                            <a class="btn btn-danger" id="book" href="/deletecar/{{post.id}}" style="margin-top: 10px;">Delete</a>
+                        </td>
+                        
+                    {% endif %}
+                </tr>
+
+            {%endfor%}
+        </table>
+
+        <div class="container p-4">
+            <div class="pagination justify-content-center">     
+                <span class="step-links">
+                      {% if cars.has_previous %}
+                      <a href="?page=1" style="color: beige;">&laquo; first</a>
+                      <a href="?page={{ cars.previous_page_number }}" style="color: beige;" >previous</a>
+                  {% endif %}              
+                    <span class="current">
+                        Page {{ cars.number }} of {{ cars.paginator.num_pages }}
+                    </span>       
+                  {% if cars.has_next %}
+                      <a href="?page={{ cars.next_page_number }}" style="color: beige;">next</a>
+        
+                      <a href="?page={{ cars.paginator.num_pages }}" style="color: beige;">last &raquo;</a>
+                  {% endif %}
+                </span>
+                </div>
+            </div>        
+
+        <a href="{% url 'index' %}" class="return" onMouseOver="this.style.color='azure'" style="color: brown; margin-left: 90%;" onMouseOut="this.style.color='brown'">Return to home</a>
+        
+        
+    </div>
+
+{% endblock content%}

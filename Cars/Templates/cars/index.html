@@ -1,0 +1,157 @@
+{% extends "cars/base.html" %}
+
+
+{% block title%}
+Welcome
+{% endblock %}
+
+
+{% block content %}
+
+{% if user.profile.role == 'Customer' %}
+
+            {% if messages %}
+            {% for msg in messages %}
+            <div class="alert alert-{{ msg.tags }}">
+            {{ msg }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            <h1 id="layout" style="color: rgb(140, 15, 15);">Welcome Amigo &#128588;</h1>
+
+            <p style="text-align: center; color:aliceblue">------------------------------------------------------------------------------------------------------ </p>
+          
+            <h2 id="layout" style="color: rgb(140, 15, 15);">Explore our &#128664; Services</h2>
+  {% else %}     
+  <h1 id="layout" style="color: rgb(140, 15, 15);">Welcome Dealers &#9996;</h1>
+
+  <p style="text-align: center; color:aliceblue">------------------------------------------------------------------------------------------------------ </p>
+
+  <h2 id="layout" style="color: rgb(140, 15, 15);">Register your &#128664;</h2>
+ {% endif %}   
+ 
+        
+{%endblock%}
+
+
+{%block side%}
+{% if user.profile.role == 'Customer' %}
+<table style="margin:auto; margin-top: 10%;">
+    <tr>
+    <th>
+    <div class="card" style="width: 16rem;  height: 15rem; margin-left: 20px;">
+        <div class="card-body">
+          <h5 class="card-title">BMW</h5>
+          <img src="/static/images/BMW.jfif" style="width: 13rem;"><br><br>
+          <a href="/available" class="btn btn-primary">Book</a>
+        </div>
+    </div>
+    </th>
+   <th>
+    <div class="card" style="width: 16rem; height: 15rem; margin-left: 20px;">
+        <div class="card-body">
+          <h5 class="card-title">Swift</h5>
+          <img src="/static/images/Swift.jfif" style="width: 13rem;"><br>
+          <a href="/available" class="btn btn-primary">Book</a>
+        </div>
+    </div>
+   </th>
+   <th>
+    <div class="card" style="width: 16rem; height: 15rem; margin-left: 20px;">
+        <div class="card-body">
+          <h5 class="card-title">Celerio</h5>
+          <img src="/static/images/celerio.jfif" style="width: 13rem;"><br><br>
+          <a href="/available" class="btn btn-primary">Book</a>
+        </div>
+    </div>
+   </th>
+   
+        <th>
+            <div class="card" style="width: 18rem; margin-left: 20px;">
+                <div class="card-body">
+                <h5 class="card-title">Innova</h5>
+                <img src="/static/images/innova.jfif" style="width: 15rem;">
+                <a href="/available" class="btn btn-primary">Book</a>
+                </div>
+            </div>
+            </th>
+            <th>
+                <div class="card" style="width: 18rem; margin-left: 20px;">
+                    <div class="card-body">
+                    <h5 class="card-title">Others</h5>
+                    <img src="/static/images/cars.jfif" style="width: 15rem;"><br><br>
+                    <a href="/available" class="btn btn-primary">Book</a>
+                    </div>
+                </div>
+            </th>
+    </tr>
+    <main role="main" class="container">
+        <div class="row">
+  
+          {% if messages %}
+            {% for msg in messages %}
+            <div class="alert alert-{{ msg.tags }}">
+              {{ msg }}
+            </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </main>
+
+{% else %}
+<table style="margin:auto; margin-top: 10%;">
+  <tr>
+  <th>
+  <div class="card" style="width: 16rem;  height: 15rem; margin-left: 20px;">
+      <div class="card-body">
+        <h5 class="card-title">BMW</h5>
+        <img src="/static/images/BMW.jfif" style="width: 13rem;"><br><br>
+        <a href="/available" class="btn btn-primary">Register</a>
+      </div>
+  </div>
+  </th>
+ <th>
+  <div class="card" style="width: 16rem; height: 15rem; margin-left: 20px;">
+      <div class="card-body">
+        <h5 class="card-title">Swift</h5>
+        <img src="/static/images/Swift.jfif" style="width: 13rem;"><br>
+        <a href="/available" class="btn btn-primary">Register</a>
+      </div>
+  </div>
+ </th>
+ <th>
+  <div class="card" style="width: 16rem; height: 15rem; margin-left: 20px;">
+      <div class="card-body">
+        <h5 class="card-title">Celerio</h5>
+        <img src="/static/images/celerio.jfif" style="width: 13rem;"><br><br>
+        <a href="/available" class="btn btn-primary">Register</a>
+      </div>
+  </div>
+ </th>
+ 
+      <th>
+          <div class="card" style="width: 18rem; margin-left: 20px;">
+              <div class="card-body">
+              <h5 class="card-title">Innova</h5>
+              <img src="/static/images/innova.jfif" style="width: 15rem;">
+              <a href="/available" class="btn btn-primary">Register</a>
+              </div>
+          </div>
+          </th>
+          <th>
+              <div class="card" style="width: 18rem; margin-left: 20px;">
+                  <div class="card-body">
+                  <h5 class="card-title">Others</h5>
+                  <img src="/static/images/cars.jfif" style="width: 15rem;"><br><br>
+                  <a href="/available" class="btn btn-primary">Register</a>
+                  </div>
+              </div>
+          </th>
+  </tr>
+
+    
+{% endif %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

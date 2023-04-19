@@ -1,0 +1,50 @@
+{%extends "Cars/base.html"%}
+{%load crispy_forms_tags%}
+{%block content%}
+
+
+
+        <h3 class="my-4">Hi {{user.profile.username}}!</h3>
+        <hr>
+        <legend class="border-bottom mb-4 ">Details of the Car</legend>
+        <p style="font-weight: bold;"> CarName - {{car_details.CarName}} </p>
+        <p style="font-weight: bold;"> ModelName - {{car_details.ModelName}} </p>
+        <p style="font-weight: bold;"> CarNumber - {{car_details.CarNumber}} </p>
+        <p style="font-weight: bold;"> CostPerDay - {{car_details.CostPerDay}} </p>
+        <legend class="border-bottom mb-4 ">Enter booking details</legend>
+        <div class="container mt-2">
+            <form method="POST" enctype="multipart/form-data"> 
+                {% csrf_token %}
+                <div class="row mt-2">
+                    <div class="form-group col-md-8">
+                        <label><i style="font-weight: bold;">Address</i></label>
+                        <input type="text" class="form-control" name="address"  required>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="form-group col-md-8">
+                        <label><i style="font-weight: bold;">Phone Number</i></label>
+                        <input type="text" class="form-control" name="phone_number" required>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="form-group col-md-8">
+                        <label><i style="font-weight: bold;">From Date</i></label>
+                        <input type="text" class="form-control" name="from_date"  required>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="form-group col-md-8">
+                        <label><i style="font-weight: bold;">To Date</i></label>
+                        <input type="text" class="form-control" name="to_date"  required>
+                    </div>
+                </div>
+                            
+                <button type="submit" class="btn btn-primary mt-3 btn-lg">Submit</button>
+              </form>
+
+{%endblock content%}
+
+
+{% block side%}
+{%endblock%}

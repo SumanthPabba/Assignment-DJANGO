@@ -1,0 +1,27 @@
+{% extends "cars/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <center style="font-size: larger; color: goldenrod;"> <b>REGISTER YOUR NEW CARS</b></center>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button type="submit">Add Car</button>
+            </div>    
+        </form>
+        <div>
+            <a href="{% url 'available' %}" class="return" onMouseOver="this.style.color='azure'" style=" color:brown;margin-right: 20px;" onMouseOut="this.style.color='brown'">Back</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block side %}
+  {% endblock %}
+
+{% block footer %}
+{% endblock %}

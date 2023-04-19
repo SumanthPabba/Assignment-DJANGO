@@ -1,0 +1,47 @@
+.total{
+    background-color: lightslategray
+}
+
+
+.image{
+    margin-top: 150px;
+    margin-left: 400px;
+    height: 56vh;
+}
+
+#layout{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.content-section {
+    padding: 70px 0;
+    border: 3px solid green;
+    text-align: center;
+    width: 40%;
+    background-color: lightyellow;
+  }
+
+#photo{
+   position: relative;
+   left:20%;
+
+}
+
+.media-body{
+    padding-top: 4%;
+}
+
+#table{
+    margin-top: 20px;
+    right: 20px;
+    background-color: thistle;
+    width: 95%;
+    margin-left: 35px;
+}
+
+
+#heading{
+    margin-top: 30px;
+}
+

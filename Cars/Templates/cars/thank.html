@@ -1,0 +1,26 @@
+{%extends "cars/base.html"%}
+
+{%block content%}
+
+<div class="jumbotron jumbotron-fluid my-5">
+
+    <div class="container">
+
+      <h3 class="display-4">Thank you for booking the car</h3>
+
+      <h5 class="display-4">We have mailed the details</h5>
+
+      <p class="lead">Thank you &#128512;! Visit Again &#129488;!</p>
+
+    </div>
+
+  </div>
+
+  <a href="{% url 'available' %}" class="return">Back</a>
+
+{%endblock content%}
+
+
+
+{% block side%}
+{%endblock%}

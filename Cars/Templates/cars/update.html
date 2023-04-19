@@ -1,0 +1,70 @@
+{% extends "cars/base.html" %}
+{% load crispy_forms_tags %} 
+
+
+{% block content %}
+
+    <div class="container mt-5">
+        <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+            <div class="row mt-2">
+                <div class="form-group col-md-12">
+                    <label><i style="font-weight: bold;">Car Name</i></label>
+                    <input type="text" class="form-control" name="CarName" value="{{car.CarName}}" required>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="form-group col-md-12">
+                    <label><i style="font-weight: bold;">Model Name</i></label>
+                    <input type="text" class="form-control" name="ModelName" value="{{car.ModelName}}" required>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="form-group col-md-12">
+                    <label><i style="font-weight: bold;">Car Number</i></label>
+                    <input type="text" class="form-control" name="CarNumber" value="{{car.CarNumber}}" required>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="form-group col-md-12">
+                    <label><i style="font-weight: bold;">Features</i></label>
+                    <input type="text" class="form-control" name="Features" value="{{car.Features}}" required>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="form-group col-md-12">
+                    <label><i style="font-weight: bold;">Is Available</i></label>
+                    <input type="text" class="form-control" name="IsAvailable" value="{{car.IsAvailable}}" required>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="form-group col-md-12">
+                    <label><i style="font-weight: bold;">Fuel Comsumption</i></label>
+                    <input type="text" class="form-control" name="fuelConsumption" value="{{car.fuelConsumption}}" required>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label><i style="font-weight: bold;">Car Image &nbsp;&nbsp;&nbsp;<a href="/media/{{car.CarImage}}/">View Image</a></i></label>
+                <input type="file" class="form-control" name="image">
+            </div>
+            <div class="row mt-2">
+                <div class="form-group col-md-12">
+                    <label><i style="font-weight: bold;">Car Insurance</i></label>
+                    <input type="text" class="form-control" name="carInsurance" value="{{car.carInsurance}}" required>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="form-group col-md-12">
+                    <label><i style="font-weight: bold;">Cost Per Day</i></label>
+                    <input type="text" class="form-control" name="CostPerDay" value="{{car.CostPerDay}}" required>
+                </div>
+            </div>
+        
+            <button type="submit" class="btn btn-primary mt-4 btn-lg">Update Details</button>
+          </form>
+{% endblock content %}
+
+{% block footer %}
+{% endblock %}
+
+{% block side %}
+{% endblock %}

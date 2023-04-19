@@ -1,0 +1,16 @@
+{% autoescape off %}
+Hello {{ name }},
+We received a request to book a car and we successfully booked the car with email id {{ email }}.
+The car details are below.
+Car Name : {{ carName }},
+Car Number : {{ carNumber }} ,
+From Date : {{ fromdate }},
+To Date : {{ todate }},
+No of days : {{ noofdays }},
+Total Fare : {{ Fare }},
+Any queries contact the  {{ protocol }}://{{domain}}
+Thank you and Visit Again.
+Regards,
+The Car Rental Service Team
+
+{% endautoescape %}
