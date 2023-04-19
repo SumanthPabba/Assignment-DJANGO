@@ -1,0 +1,30 @@
+{% extends "cars/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend>Join Now!</legend>
+                {{ form|crispy }}
+                
+            </fieldset>
+
+            <div class="form-group">
+                <button type="submit">Sign Up</button>
+            </div>    
+        </form>
+        <small>
+            Already have an account? <a href="{% url 'login' %}">Sign In</a>
+        </small>
+        <p>To be a dealer. Please send a mail to <b>sunnycool1811@gmail.com</b></p>
+    </div>
+
+{% endblock %}
+
+{% block side %}
+  {% endblock %}
+
+{% block footer %}
+{% endblock %}
